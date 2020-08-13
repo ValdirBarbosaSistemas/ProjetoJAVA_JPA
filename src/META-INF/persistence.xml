@@ -13,7 +13,7 @@
 		
 		<properties> <!--As properties são as propriedades ou configurações ref. a configuração do 
 		banco de dados como vimos anteriormente no JDBC -->
-			<!--Configurações do JDBC IGUAL AO MYSQL-->
+			<!--Configurações do JDBC IGUAL AO MYSQL da aula de JDBC-->
 			
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"    value="jdbc:mysql://localhost/curso_java" />
@@ -23,12 +23,14 @@
 			<!--Configurações do hibernate -->
 			
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect" />
-			<!-- -->
+			<!--Acima está o 'dialeto' ou a 'linguagem padrão' que vai ser usado no hibernate (MySQL) -->
 			<property name="hibernate.show_sql" value="true" />
-			<!-- -->
+			<!--Acima serve para mostrar o SQL no java -->
 			<property name="hibernate.format_sql" value="true" />
-			<!-- -->
+			<!--Acima serve para mostrar o SQL no console -->
 			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<!--Acima serve para dizer se vai gerar ou não o schema para o banco de dados 
+			e a partir daí para a criação das tabelas  -->
 		</properties>
 	</persistence-unit>
 </persistence>
