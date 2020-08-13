@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-	<persistence-unit name="ProjetoJAVA_JPA">
+<persistence version="2.2"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<persistence-unit name="ProjetoJAVA_JPA"> <!--A 'persistence-unit' representa uma conexao 
+	com o banco de dados específico, ou seja, um conjunto de informações para um banco de dados específico.
+	Você pode criar mais de uma persistence-unit para colocar as informações que queira ao BD -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> <!--Provider é o 'provedor'
+		que no caso nosso vai ser o Hibernate -->
+		<!-- -->
+		<mapping-file>META-INF/consultas.xml</mapping-file>
+		
+		<properties> <!--As properties são as propriedades ou configurações ref. a configuração do 
+		banco de dados como vimos anteriormente no JDBC -->
+			<!--Configurações do JDBC IGUAL AO MYSQL-->
+			
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url"    value="jdbc:mysql://localhost/curso_java" />
+			<property name="javax.persistence.jdbc.user"   value="root" />
+			<property name="javax.persistence.jdbc.password" value="V@ldir" />
+			
+			<!--Configurações do hibernate -->
+			
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect" />
+			<!-- -->
+			<property name="hibernate.show_sql" value="true" />
+			<!-- -->
+			<property name="hibernate.format_sql" value="true" />
+			<!-- -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+		</properties>
 	</persistence-unit>
 </persistence>
