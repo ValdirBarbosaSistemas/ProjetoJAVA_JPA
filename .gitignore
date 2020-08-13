@@ -1,0 +1,7 @@
+#ARQUIVOS IGNORADOS PELO GIT
+
+.class
+bin/
+.settings/
+build/
+libs/
