@@ -8,9 +8,10 @@
 	Você pode criar mais de uma persistence-unit para colocar as informações que queira ao BD -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> <!--Provider é o 'provedor'
 		que no caso nosso vai ser o Hibernate -->
-		<!-- -->
-		<mapping-file>META-INF/consultas.xml</mapping-file>
-		
+		<class>
+		modelo.basico.Usuario
+		<!-- O código acima está referenciando no banco de dados o nome da classe Usuário -->
+		</class>		
 		<properties> <!--As properties são as propriedades ou configurações ref. a configuração do 
 		banco de dados como vimos anteriormente no JDBC -->
 			<!--Configurações do JDBC IGUAL AO MYSQL da aula de JDBC-->
