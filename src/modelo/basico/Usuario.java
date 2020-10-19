@@ -2,6 +2,7 @@ package modelo.basico;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /*
  * Significa que essa classe ela é uma entidade de um banco de dados, ou seja, a
@@ -15,6 +16,7 @@ public class Usuario {
 
 	private String nome;
 
+	@Transient // Dessa forma ele NÃO VAI para o banco de dados
 	private String email;
 
 	// Construtor padrão
