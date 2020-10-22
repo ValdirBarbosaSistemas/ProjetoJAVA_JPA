@@ -1,6 +1,7 @@
 package modelo.basico;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
@@ -12,6 +13,7 @@ import javax.persistence.Transient;
 @Entity
 public class Usuario {
 	@Id // Significa que o atributo irá ser a chave primária do banco de dados
+	@GeneratedValue // Gerando o id (no caso seria o auto incremento)
 	private Long id;
 
 	private String nome;
