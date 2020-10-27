@@ -17,7 +17,7 @@ public class NovoUsuario {
 		 * entidade entre outros, ou seja, é ele que irá fazer o CRUD para o banco de
 		 * dados... Ele vai converter os dados dos objetos em dados SQL.
 		 */
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projeto_JPA");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetoJAVA_JPA");
 		/*
 		 * Aqui no caso ele ta 'setando' o projeto para ser criado o banco com o nome,
 		 * ou seja, todas as configurações realizadas ref. ao banco de dados feitos no
@@ -35,15 +35,27 @@ public class NovoUsuario {
 
 		// para inserir um objeto no banco de dados usaremos um método 'persist'
 
-		Usuario novoUsuario = new Usuario("Djalma", "djalma@lanche.com.br");
+		Usuario novoUsuario = new Usuario("Arthur", "arthur@lanche.com.br");
 		/*
 		 * Para se colocar um dado no banco temos que 'criar' uma transação e ao término
 		 * fechar o mesmo como veremos no código abaixo.
 		 */
-		em.getTransaction().begin();
+		em.getTransaction().begin(); // Criando a transação do dado no banco
 		em.persist(novoUsuario); // Colocando o objeto no banco de dados
 		em.getTransaction().commit(); // Efetivando a transação do dado no banco
 
+		/*
+		 * Na criação do objeto, ele só irá gerar o 'id' a partir do 'persist', ou seja,
+		 * antes disso ele não gera nada. Caso queira saber qual foi o 'id' gerado na
+		 * hora da criação, basta ver pelo getNome como mostra o código abaixo.
+		 */
+		
+		System.out.println(novoUsuario.getNome());
+
+		/*
+		 * No JPA, o (PERSIST) SÓ IRÁ SER CRIADO QUANDO VOCE COLOCA A TRANSAÇÃO, caso
+		 * não tenha, ele não irá ser adicionado ao banco.
+		 */
 		em.close(); // fechando o entityManager
 		emf.close(); // fechando o entitymanagerFactory
 	}
