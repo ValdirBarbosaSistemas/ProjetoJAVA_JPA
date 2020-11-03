@@ -25,6 +25,7 @@ public class NovoUsuario {
 		 * DADOS/OUTRAS CONFIGURAÇÕES, TERIA QUE SE CRIAR OUTRO 'PERSISTENCE.XML' E
 		 * CONSEQUENTEMENTE OUTRO 'ENTITYMANAGERFACTORY'.
 		 */
+
 		/*
 		 * O papel do (EntityManagerFactory) é criar um ENTITYMANAGER, ou seja, é aqui
 		 * que ele irá criar uma conexao com o banco para poder 'rodar' no
@@ -33,8 +34,10 @@ public class NovoUsuario {
 
 		em = emf.createEntityManager();
 
-		// para inserir um objeto no banco de dados usaremos um método 'persist'
-
+		/*
+		 * para inserir um objeto (pois no JPA trabalhamos no mundo dos objetos) no
+		 * banco de dados usaremos um método 'persist'
+		 */
 		Usuario novoUsuario = new Usuario("Arthur", "arthur@lanche.com.br");
 		/*
 		 * Para se colocar um dado no banco temos que 'criar' uma transação e ao término
@@ -49,7 +52,7 @@ public class NovoUsuario {
 		 * antes disso ele não gera nada. Caso queira saber qual foi o 'id' gerado na
 		 * hora da criação, basta ver pelo getNome como mostra o código abaixo.
 		 */
-		
+
 		System.out.println(novoUsuario.getNome());
 
 		/*
