@@ -15,10 +15,10 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "prod_nome") // Modificado o nome da coluna
+	@Column(name = "prod_nome", nullable = false) // Modificado o nome da coluna e dizendo que não aceita nulo
 	private String nome;
 
-	@Column(name = "prod_preco") // Modificando o nome preco
+	@Column(name = "prod_preco", nullable = false) // Modificando o nome preco
 	private Double preco;
 
 	public Produto() {
