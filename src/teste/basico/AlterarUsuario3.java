@@ -17,11 +17,11 @@ public class AlterarUsuario3 {
 
 		em.getTransaction().begin();
 
-		Usuario usuario = em.find(Usuario.class, 3L); // Consultando o usuario de cód. 6
+		Usuario usuario = em.find(Usuario.class, 3L); // Consultando o usuario de cód. 3
 
 		em.detach(usuario); // Para DESASSOCIAR A ALTERAÇÃO, É NECESSÁRIO USAR A PALAVRA 'DETACH'
 
-		System.out.println(usuario.getNome()); // Consultado através do email
+		System.out.println(usuario.getNome()); // Consultado através do nome
 		usuario.setNome("Carlos de Souza");
 
 		em.merge(usuario); // NOME NÃO ALTERADO, pois só altera agora com a palavra 'MERGE'

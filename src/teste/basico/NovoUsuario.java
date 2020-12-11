@@ -10,6 +10,11 @@ public class NovoUsuario {
 	public static void main(String[] args) {
 		EntityManager em;
 		/*
+		 * EntityManager é o responsável pelo CRUD, é ele quem vai ficar responsável
+		 * pelas transações no banco de dados.
+		 */
+
+		/*
 		 * Nessa classe veremos a criação das entidades para ser adicionada ao banco, ou
 		 * seja aqui iremos criar as inserções, alterações e exclusões de cada
 		 * linha/coluna do banco. E para isso veremos os objetos (EntityManager) que é o

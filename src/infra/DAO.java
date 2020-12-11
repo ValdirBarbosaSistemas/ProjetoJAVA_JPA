@@ -18,9 +18,9 @@ public class DAO<E> {
 	 * serão colocadas no DAO.
 	 */
 
-	private static EntityManagerFactory emf;
-	private EntityManager em;
-	private Class<E> classe;
+	private static EntityManagerFactory emf; // Declarando um entityManagerFactory
+	private EntityManager em; // Criando um entityManager
+	private Class<E> classe; // Declarando uma classe para o find (consulta)
 	/*
 	 * Outra maneira de inicializar seria melhor em um bloco estático, ou seja, ele
 	 * só inicializa uma única vez quando a classe for carregada pelo java. OBS:
@@ -28,6 +28,7 @@ public class DAO<E> {
 	 * try/catch, pois se caso ocorrer um erro ele simplismente não carregará a
 	 * página.
 	 */
+
 	static {
 		try {
 			emf = Persistence.createEntityManagerFactory("ProjetoJAVA_JPA"); // Criando o EntityManagerFactory
@@ -44,6 +45,12 @@ public class DAO<E> {
 	public DAO(Class<E> classe) {
 		em = emf.createEntityManager(); // Criando a instancia através do construtor
 		this.classe = classe;
+		/*
+		 * Esse construtor faz com que toda vez quando se iniciar a transação e fazer
+		 * uma consulta, geralmente quando faz isso ele pede para colocar como parâmetro
+		 * o nome do arquivo '.class', ou seja, ele aqui ta fazendo de uma maneira
+		 * 'automática'. Não vai precisar fazer manualmente.
+		 */
 	}
 
 	public DAO() {
@@ -65,16 +72,19 @@ public class DAO<E> {
 	 * }
 	 */
 
+	// Abrindo uma transação
 	public DAO<E> abrirTransacao() {
 		em.getTransaction().begin();
 		return this;
 	}
 
+	// Confirmando uma transação
 	public DAO<E> fecharTransacao() {
 		em.getTransaction().commit();
 		return this;
 	}
 
+	// Incluindo uma transação
 	public DAO<E> incluirTransacao(E entidade) {
 		em.persist(entidade);
 		return this;
@@ -97,7 +107,7 @@ public class DAO<E> {
 		}
 
 		String jpql = "select e from " + classe.getName() + "e";
-		// Toda consulta em JPQL precisa ter um "alias"
+		// Toda consulta em JPQL precisa ter um "alias" ou variável
 		TypedQuery<E> query = em.createQuery(jpql, classe); // Ele vai retornar a minha consulta
 		query.setMaxResults(qtde);
 		query.setFirstResult(desloc);
@@ -113,6 +123,7 @@ public class DAO<E> {
 	 * registros a partir desse número. Ficaria mais ou menos assim (15,10).
 	 */
 
+	// Fechando transação
 	public void fechar() {
 		em.close();
 	}

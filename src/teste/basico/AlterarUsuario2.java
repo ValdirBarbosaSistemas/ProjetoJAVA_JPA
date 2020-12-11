@@ -13,8 +13,8 @@ public class AlterarUsuario2 {
 
 		em.getTransaction().begin();
 
-		Usuario usuario = em.find(Usuario.class, 3L); // Consultando o usuario de cód. 6
-		System.out.println(usuario.getNome()); // Consultado através do email
+		Usuario usuario = em.find(Usuario.class, 3L); // Consultando o usuario de cód. 3
+		System.out.println(usuario.getNome()); // Consultado através do nome
 		usuario.setNome("Carlos André");
 
 		// em.merge(usuario);

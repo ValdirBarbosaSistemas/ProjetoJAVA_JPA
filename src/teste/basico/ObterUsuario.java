@@ -13,11 +13,12 @@ public class ObterUsuario {
 		EntityManager em = emf.createEntityManager();
 
 		/*
-		 * No código abaixo no primeiro parametro ele quer o tipo de classe (arquivo.class) que quero
-		 * mapear a partir do resultado do banco e o segundo é o indentificador que
-		 * quero usar para consultar.
+		 * No código abaixo no primeiro parametro ele quer o tipo de classe
+		 * (arquivo.class) que quero mapear a partir do resultado do banco e o segundo é
+		 * o indentificador que quero usar para consultar.
 		 */
-		Usuario usuario = em.find(Usuario.class, 1L);
+		
+		Usuario usuario = em.find(Usuario.class, 1L); // O 'find' é como se fosse um select no sql
 
 		System.out.println(usuario.getNome()); // Irá mostrar o usuário que voce solicitou
 
