@@ -15,7 +15,7 @@ public class AlterarUsuario1 {
 
 		Usuario usuario = em.find(Usuario.class, 3L); // Consultando o usuario de cód. 3
 		System.out.println(usuario.getNome()); // Consultado através do nome
-		usuario.setNome("Carlos André");
+		usuario.setNome("Carlos");
 
 		em.merge(usuario);
 		/*
@@ -24,9 +24,9 @@ public class AlterarUsuario1 {
 		 */
 
 		System.out.println(usuario.getNome()); // NOME ALTERADO
-		
+
 		em.getTransaction().commit();
-		
+
 		em.close();
 		emf.close();
 	}

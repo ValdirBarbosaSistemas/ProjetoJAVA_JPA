@@ -90,14 +90,16 @@ public class DAO<E> {
 		return this;
 	}
 
+	
 	/*
 	 * Podemos criar um método que faz tudo isso que fizemos no código acima, que
 	 * justamente foi no exemplo de encadeamente anterior. Veremos abaixo...
-	 * 
-	 * public DAO<E> incluirTransacao(E entidade) { return
-	 * this.abrirTransacao().incluirTransacao().fecharTransacao(); }
-	 * 
 	 */
+	
+	public DAO<E> incluirTransacaoAtomica(E entidade) {
+		return this.abrirTransacao().incluirTransacao(entidade).fecharTransacao();
+	} 
+	
 
 	// Para obter todos os registros do banco de uma forma simples
 
