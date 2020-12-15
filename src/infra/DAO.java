@@ -78,43 +78,42 @@ public class DAO<E> {
 		return this;
 	}
 
-	// Confirmando uma transação
-	public DAO<E> fecharTransacao() {
-		em.getTransaction().commit();
-		return this;
-	}
-
 	// Incluindo uma transação
 	public DAO<E> incluirTransacao(E entidade) {
 		em.persist(entidade);
 		return this;
 	}
 
-	
+	// Confirmando uma transação
+	public DAO<E> fecharTransacao() {
+		em.getTransaction().commit();
+		return this;
+	}
+
 	/*
 	 * Podemos criar um método que faz tudo isso que fizemos no código acima, que
 	 * justamente foi no exemplo de encadeamente anterior. Veremos abaixo...
 	 */
-	
+
 	public DAO<E> incluirTransacaoAtomica(E entidade) {
 		return this.abrirTransacao().incluirTransacao(entidade).fecharTransacao();
-	} 
-	
+	}
 
 	// Para obter todos os registros do banco de uma forma simples
 
-	public List<E> obterTodos(int qtde, int desloc) {
+	public List<E> obterTodos(int qtdeRegistros, int desloc) {
 		if (classe == null) {
-			throw new UnsupportedOperationException("A classe está nula");
+			throw new UnsupportedOperationException("A classe está nula!");
 		}
 
-		String jpql = "select e from " + classe.getName() + "e";
+		String jpql = "select e from " + classe.getName() + " e";
 		// Toda consulta em JPQL precisa ter um "alias" ou variável
 		TypedQuery<E> query = em.createQuery(jpql, classe); // Ele vai retornar a minha consulta
-		query.setMaxResults(qtde);
+		query.setMaxResults(qtdeRegistros);
 		query.setFirstResult(desloc);
 		return query.getResultList();
 	}
+
 	/*
 	 * No código acima teremos 2 parâmetros... Um para ver a quantidade de registros
 	 * que voce quer pesquisar, e o segundo parâmetro é para voce "deslocar" ou
@@ -124,6 +123,12 @@ public class DAO<E> {
 	 * pesquisar e no segundo eu coloco (10) que é onde eu quero que pegue os
 	 * registros a partir desse número. Ficaria mais ou menos assim (15,10).
 	 */
+
+	// Criando outro método 'obterTodos' para que não precise digitar as informações
+	// caso queira
+	public List<E> obterTodos() {
+		return this.obterTodos(10, 0); // Valor por padrão para quando for na hora de receber os dados
+	}
 
 	// Fechando transação
 	public void fechar() {
