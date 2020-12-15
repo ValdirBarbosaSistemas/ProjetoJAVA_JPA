@@ -1,5 +1,6 @@
 package modelo.relacionamentoUmPraUm;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,12 @@ public class Cliente {
 	 * 
 	 */
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
+	/*
+	 * Essa propriedade serve para de forma automatizada fazer operações de //
+	 * transação, ou seja, dessa forma ele vai persistir tanto o Cliente como também
+	 * o assento caso não queira fazer de modo explícito.
+	 */
 	@JoinColumn(name = "assento_id", unique = true) // Desse modo a chave será ÚNICA não havendo duplicidade
 	private Assento assentos; // Dessa maneira estarei tendo um acesso a classe Assento como um todo
 	/*

@@ -11,7 +11,7 @@ public class NovoClienteAssento1 {
 		// Criando o cliente...
 		Cliente cliente = new Cliente("Carlos", assento);
 
-		DAO<Object> dao = new DAO<Object>();
+		DAO<Object> dao = new DAO<Object>(); // Criando um DAO GENÉRICO
 
 		// Criando a transação para se colocar no banco
 		dao.abrirTransacao()

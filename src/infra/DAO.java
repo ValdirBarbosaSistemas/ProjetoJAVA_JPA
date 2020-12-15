@@ -130,6 +130,10 @@ public class DAO<E> {
 		return this.obterTodos(10, 0); // Valor por padrão para quando for na hora de receber os dados
 	}
 
+	public E obterPorID(Object id) {
+		return em.find(classe, id);
+	}
+
 	// Fechando transação
 	public void fechar() {
 		em.close();

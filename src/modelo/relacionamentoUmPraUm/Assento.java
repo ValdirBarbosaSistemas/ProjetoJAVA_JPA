@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +15,14 @@ public class Assento {
 	private Long id;
 
 	private String nome;
+
+	/*
+	 * No código abaixo iremos fazer um relacionamento BIDIRECIONAL. Para isso
+	 * usamos a propriedade "mappedBy" que faz com que digamos que aquele
+	 * determinado atributo ja foi mapeado uma vez.
+	 */
+	@OneToOne(mappedBy = "assentos") // Para se fazer relacionamento BIDIRECIONAL
+	private Cliente cliente;
 
 	// Construtor padrão
 	public Assento() {
@@ -39,6 +48,14 @@ public class Assento {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Cliente getCliente() {
+		return this.cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 }
