@@ -14,6 +14,10 @@
 		<class>modelo.relacionamentoUmPraUm.Cliente</class>
 		<class>modelo.relacionamentoUmPraMuitos.Pedido</class>
 		<class>modelo.relacionamentoUmPraMuitos.ItemPedido</class>
+		<class>modelo.relacionamentoMuitosPraMuitos.Tio</class>
+		<class>modelo.relacionamentoMuitosPraMuitos.Sobrinho</class>
+        <class>modelo.relacionamentoMuitosPraMuitos.Ator</class>
+        <class>modelo.relacionamentoMuitosPraMuitos.Filme</class>
 
 		<!-- O código acima está referenciando no banco de dados o nome da classe Usuário -->		
 		<properties> <!--As properties são as propriedades ou configurações ref. a configuração do 
