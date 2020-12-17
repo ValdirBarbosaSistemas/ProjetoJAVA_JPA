@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
+<!-- JPA ORM MAPPING FILE -->
+	<named-query name="obterFilmesComNotaMaiorQue">
+		<query>
+			select f from Filme f
+			join fetch f.atores <!-- obter os atores de forma automática (não precisa marcar os atores) -->
+			where f.nota > :nota <!-- (:nota) parametro para uma consulta -->
+		</query>
+	</named-query> <!-- USANDO JPQL -->
+</entity-mappings>

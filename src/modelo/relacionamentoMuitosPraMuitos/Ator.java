@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "atores")
+//@NamedQueries(@NamedQuery(query = "")) AQUI É UMA MANEIRA DE SE FAZER CONSULTA NOMEADA, PORÉM VAMOS FAZER DE OUTRO MODO 
 public class Ator {
 
 	@Id

@@ -8,6 +8,9 @@
 	Você pode criar mais de uma persistence-unit para colocar as informações que queira ao BD -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> <!--Provider é o 'provedor'
 		que no caso nosso vai ser o Hibernate -->
+		
+		<mapping-file>META-INF/consultas.xml</mapping-file> <!-- LOCAL ONDE SERÁ CRIADA A 'NAMEDQUERY' -->
+		
 		<class>modelo.basico.Usuario</class>
 		<class>modelo.basico.Produto</class>
 		<class>modelo.relacionamentoUmPraUm.Assento</class>
