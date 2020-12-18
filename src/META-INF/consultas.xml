@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entity-mappings version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
-<!-- JPA ORM MAPPING FILE -->
+<entity-mappings version="2.2"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
+	<!-- JPA ORM MAPPING FILE -->
 	<named-query name="obterFilmesComNotaMaiorQue">
+		<!-- USANDO JPQL -->
 		<query>
 			select f from Filme f
 			join fetch f.atores <!-- obter os atores de forma automática (não precisa marcar os atores) -->
 			where f.nota > :nota <!-- (:nota) parametro para uma consulta -->
 		</query>
-	</named-query> <!-- USANDO JPQL -->
+	</named-query>
+
+	<!-- Aqui ele ta utilizando o nome do 'resultSetMapping para dizer qual 
+		classe que ele vai mapear e fazer a média -->
+	<named-native-query name="obterMediaGeralDosFilmes"
+		result-set-mapping="NotaFilmeMap">
+		<query>
+			select avg(nota) as media from filmes <!-- AVG é um método para se calcular a media no sql -->
+		</query>
+	</named-native-query>
+
+	<!-- FAZENDO UMA CONSULTA NATIVA USANDO (NativeNamedQuery) -->
+	<sql-result-set-mapping name="NotaFilmeMap">
+		<constructor-result
+			target-class="modelo.consultaNativeNamedQuery.NotaFilme">
+			<column name="media" class="java.lang.Double" />
+		</constructor-result>
+		<!-- então, no código acima está querendo dizer que essa classe 'Notafilme' 
+			tenha um construtor que receba o parâmetro 'media' e a partir da consulta 
+			ele vai criar um objeto usando 'sqlresultsetmapping' -->
+	</sql-result-set-mapping>
+
 </entity-mappings>

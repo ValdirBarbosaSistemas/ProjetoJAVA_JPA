@@ -21,6 +21,9 @@
 		<class>modelo.relacionamentoMuitosPraMuitos.Sobrinho</class>
         <class>modelo.relacionamentoMuitosPraMuitos.Ator</class>
         <class>modelo.relacionamentoMuitosPraMuitos.Filme</class>
+        <class>modelo.composicao.Endereco</class>
+        <class>modelo.composicao.Fornecedor</class>
+        <class>modelo.composicao.Funcionario</class>
 
 		<!-- O código acima está referenciando no banco de dados o nome da classe Usuário -->		
 		<properties> <!--As properties são as propriedades ou configurações ref. a configuração do 
